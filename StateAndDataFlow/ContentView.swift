@@ -21,12 +21,10 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .offset(x: 0, y: 200)
             Spacer()
-            
-            VStack {
-                ButtonView(timer: timer)
-                Button(action: user.removeAll) {
-                    Text("Logout")
-                }
+            ButtonView(timer: timer)
+            Spacer()
+            Button(action: user.removeAll) {
+                Text("Logout")
             }
             Spacer()
         }
@@ -36,7 +34,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        .environmentObject(UserManager())
+            .environmentObject(UserManager())
     }
 }
 
