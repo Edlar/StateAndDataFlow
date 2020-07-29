@@ -12,7 +12,7 @@ import Combine
 final class UserManager: ObservableObject {
     @Published private(set) var isRegister = UserDefaults.standard.bool(
         forKey: keys.isRagister.rawValue)
-    @Published var userName = UserDefaults.standard.string(
+    @Published private(set) var userName = UserDefaults.standard.string(
         forKey: keys.userName.rawValue)
     
     private let userDefault = UserDefaults.standard
@@ -32,5 +32,7 @@ final class UserManager: ObservableObject {
     func removeAll() {
         userDefault.removeObject(forKey: keys.userName.rawValue)
         userDefault.removeObject(forKey: keys.isRagister.rawValue)
+        self.userName = nil
+        self.isRegister = false
     }
 }
